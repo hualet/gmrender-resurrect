@@ -11,12 +11,9 @@ gmediarender_SOURCES = main.c git-version.h \
 	output.c output.h \
 	logging.h logging.c \
 	xmldoc.c xmldoc.h \
-	xmlescape.c xmlescape.h
-
-if HAVE_GST
-gmediarender_SOURCES += \
-	output_gstreamer.c  output_gstreamer.h
-endif
+	xmlescape.c xmlescape.h \
+    dbus_dmovie.h dbus_dmovie.c \
+    output_dmovie.h output_dmovie.c
 
 main.c : git-version.h
 

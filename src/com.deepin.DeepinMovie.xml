@@ -1,0 +1,19 @@
+<node>
+  <interface name="com.deepin.DeepinMovie">
+    <property name="Volume" type="d" access="readwrite"/>    <property name="Mute" type="b" access="readwrite"/>    <property name="Duration" type="x" access="read"/>    <property name="Position" type="x" access="read"/>    <method name="PlayPaths">
+      <arg direction="in" type="s" name="pathList"/>
+    </method>
+    <method name="Play">
+    </method>
+    <method name="Pause">
+    </method>
+    <method name="Stop">
+    </method>
+    <method name="SetUri">
+      <arg direction="in" type="s" name="uri"/>
+    </method>
+    <method name="Seek">
+      <arg direction="in" type="x" name="position"/>
+    </method>
+  </interface>
+</node>
