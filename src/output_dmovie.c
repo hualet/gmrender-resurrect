@@ -1,3 +1,4 @@
+#include <glib.h>
 #include "logging.h"
 #include "upnp_connmgr.h"
 #include "output_module.h"
@@ -23,43 +24,43 @@ static void output_dmovie_set_uri(const char *uri,
 
 static int output_dmovie_play(output_transition_cb_t callback) {
 	Log_info("output dmovie", "output_dmovie_play");
-	dbus_dmovie__call_play_sync (
-	    dbus_dmovie_proxy,
-	    NULL,
-	    NULL);
+	gboolean status = dbus_dmovie__call_play_sync (
+					    dbus_dmovie_proxy,
+					    NULL,
+					    NULL);
 
-	return 0;
+	return status ? 0 : -1;
 }
 
 static int output_dmovie_stop(void) {
 	Log_info("output dmovie", "output_dmovie_stop");
-	dbus_dmovie__call_stop_sync (
-	    dbus_dmovie_proxy,
-	    NULL,
-	    NULL);
+	gboolean status = dbus_dmovie__call_stop_sync (
+					    dbus_dmovie_proxy,
+					    NULL,
+					    NULL);
 
-	return 0;
+	return status ? 0 : -1;
 }
 
 static int output_dmovie_pause(void) {
 	Log_info("output dmovie", "output_dmovie_pause");
-	dbus_dmovie__call_pause_sync (
-	    dbus_dmovie_proxy,
-	    NULL,
-	    NULL);
+	gboolean status = dbus_dmovie__call_pause_sync (
+					    dbus_dmovie_proxy,
+					    NULL,
+					    NULL);
 
-	return 0;
+	return status ? 0 : -1;
 }
 
 static int output_dmovie_seek(gint64 position_nanos) {
 	Log_info("output dmovie", "output_dmovie_seek '%d'", position_nanos);
-	dbus_dmovie__call_seek_sync (
+	gboolean status = dbus_dmovie__call_seek_sync (
 	    dbus_dmovie_proxy,
 	    position_nanos,
 	    NULL,
 	    NULL);
 
-	return 0;
+	return status ? 0 : -1;
 }
 
 static int output_dmovie_add_options(GOptionContext *ctx) {
