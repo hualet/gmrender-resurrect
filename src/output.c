@@ -38,15 +38,13 @@
 #ifdef HAVE_GST
 #include "output_gstreamer.h"
 #endif
+#include "output_dmovie.h"
 #include "output.h"
 
 static struct output_module *modules[] = {
+    &dmovie_output,
 #ifdef HAVE_GST
 	&gstreamer_output,
-#else
-	// this will be a runtime error, but there is not much point
-	// in waiting till then.
-#error "No output configured. You need to ./configure --with-gstreamer"
 #endif
 };
 
